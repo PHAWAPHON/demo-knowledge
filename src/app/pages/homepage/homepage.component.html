@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="services pb-5">
+        <div class="container">
+            <div class="pt-4">
+                <h2 class="vc_custom_heading ico_header">รายชื่อพนักงาน:</h2>
+                <hr />
+                <div class="row">
+                    <div class="col-md-3 mb-3" *ngFor="let item of datas">
+                        <div class="card border-0 rounded-0 shadow" style="width: 18rem">
+                            <img src="https://www.pngitem.com/pimgs/m/80-800194_transparent-users-icon-png-flat-user-icon-png.png"
+                                alt="" />
+                            <div class="card-body mt-3 mb-3">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h4 class="card-title">{{item.fullname}}</h4>
+                                        <h6>{{item.email}}</h6>
+                                        <p>{{item.job}}</p>
+                                        
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

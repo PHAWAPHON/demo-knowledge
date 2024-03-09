@@ -1,0 +1,95 @@
+<app-navbar></app-navbar>
+<div class="container">
+ 
+    <div class="title-box">
+      <h1>จัดการข้อมูล</h1>
+    </div>
+    <a class="btn btn-primary btn-nueva" data-bs-toggle="modal" data-bs-target="#insertModal"><b>+</b> เพิ่มข้อมูล</a>
+    <div class="container table-responsive py-5">
+      <table class="table table-bordered table-hover">
+        <thead style="background-color: #516BEB; color:white;">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Fullname</th>
+            <th scope="col">Email</th>
+            <th scope="col">Job</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of datas">
+            <th scope="row">{{item.id}}</th>
+            <td>{{item.fullname}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.job}}</td>
+            <td>
+              <a class="btn btn-warning btn-nueva m-2" data-bs-toggle="modal" data-bs-target="#editModal" (click)="editData(item)"> แก้ไข</a>
+              <button type="button" class="btn btn-danger" (click)="deleteData(item.id)">ลบ</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+ 
+ 
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editModalLabel">แก้ไขข้อมูล</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form (ngSubmit)="editForm()" #myForm="ngForm">
+              <div class="form-group">
+                <label for="name">Fullname:</label>
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="formEditData.fullname" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formEditData.email" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Job:</label>
+                <input type="text" class="form-control" id="job" name="job" [(ngModel)]="formEditData.job" required>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" [disabled]="!formEditData.fullname || !formEditData.email || !formEditData.job ">บันทึก</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <div class="modal fade" id="insertModal" tabindex="-1" aria-labelledby="insertModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="insertModalLabel">เพิ่มข้อมูล</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form (ngSubmit)="submitForm()" #myForm="ngForm">
+              <div class="form-group">
+                <label for="name">Fullname:</label>
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="formData.fullname" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formData.email" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Job:</label>
+                <input type="text" class="form-control" id="job" name="job" [(ngModel)]="formData.job" required>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" [disabled]="!formData.fullname || !formData.email || !formData.job ">บันทึก</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+</div>
